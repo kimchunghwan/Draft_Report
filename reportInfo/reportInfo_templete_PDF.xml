@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<reportData>
+	<templetePath>\templete\templete01.xls</templetePath>
+	<reportId>testReport</reportId>
+	<exportFolder>\export\</exportFolder>
+	<exportFileNM>templete01_PDF_result</exportFileNM>
+	<!-- if maxLstPerPage is 0 : express all list on a Page   -->
+	<!-- TODO if maxLstPerPage is -1 : express list by add row    -->
+	<!-- if maxLstPerPage is not 0 : seperate page for List   -->
+	<maxLstPerPage>8</maxLstPerPage>
+	<!-- reportType: [0-Pdf][1-Excel][2-Email][3-CSV] -->
+	<reportType>0</reportType>
+	<items>
+		<entry>
+			<key>NAME01</key>
+			<value type="STRING" isLst="false" />
+		</entry>
+		<entry>
+			<key>ADDR01</key>
+			<value type="STRING" isLst="false" />
+		</entry>
+		<entry>
+			<key>ADDR02</key>
+			<value type="STRING" isLst="false" />
+		</entry>
+		<entry>
+			<key>NATION01</key>
+			<value type="STRING" isLst="false" />
+		</entry>
+		<entry>
+			<key>TEL01</key>
+			<value type="STRING" isLst="false" />
+		</entry>
+		<entry>
+			<key>ZIP01</key>
+			<value type="STRING" isLst="false" />
+		</entry>
+		<entry>
+			<key>NAME02</key>
+			<value type="STRING" isLst="false" />
+		</entry>
+		<entry>
+			<key>ADDR03</key>
+			<value type="STRING" isLst="false" />
+		</entry>
+		<entry>
+			<key>ADDR04</key>
+			<value type="STRING" isLst="false" />
+		</entry>
+		<entry>
+			<key>NATION02</key>
+			<value type="STRING" isLst="false" />
+		</entry>
+		<entry>
+			<key>TEL01</key>
+			<value type="STRING" isLst="false" />
+		</entry>
+		<entry>
+			<key>ZIP01</key>
+			<value type="STRING" isLst="false" />
+		</entry>
+		<entry>
+			<key>LST_DSCRPT</key>
+			<value type="STRING" isLst="true" />
+		</entry>
+		<entry>
+			<key>LST_QNTT</key>
+			<value type="STRING" isLst="true" />
+		</entry>
+		<entry>
+			<key>LST_UPRC</key>
+			<value type="STRING" isLst="true" />
+		</entry>
+		<entry>
+			<key>LST_TAMT</key>
+			<value type="STRING" isLst="true" />
+		</entry>
+		<entry>
+			<key>TCNT</key>
+			<value type="STRING" isLst="false" />
+		</entry>
+		<entry>
+			<key>TAMT</key>
+			<value type="STRING" isLst="false" />
+		</entry>
+		<entry>
+			<key>BARCODE_ean-13</key>
+			<value type="BARCODE" isLst="false" option1="ean-13" />
+		</entry>
+		<entry>
+			<key>BARCODE_itf-14</key>
+			<value type="BARCODE" isLst="false" option1="itf-14" />
+		</entry>
+		<entry>
+			<key>BARCODE_postnet</key>
+			<value type="BARCODE" isLst="false" option1="postnet" />
+		</entry>
+		<entry>
+			<key>BARCODE_code39</key>
+			<value type="BARCODE" isLst="false" option1="code39" />
+		</entry>
+		<entry>
+			<key>BARCODE_codabar</key>
+			<value type="BARCODE" isLst="false" option1="codabar" />
+		</entry>
+		<entry>
+			<key>BARCODE_royal-mail-cbc</key>
+			<value type="BARCODE" isLst="false" option1="royal-mail-cbc" />
+		</entry>
+		<entry>
+			<key>BARCODE_pdf417</key>
+			<value type="BARCODE" isLst="false" option1="pdf417" />
+		</entry>
+		<entry>
+			<key>BARCODE_upc-a</key>
+			<value type="BARCODE" isLst="false" option1="upc-a" />
+		</entry>
+		<entry>
+			<key>BARCODE_upc-e</key>
+			<value type="BARCODE" isLst="false" option1="upc-e" />
+		</entry>
+		<entry>
+			<key>BARCODE_usps4cb</key>
+			<value type="BARCODE" isLst="false" option1="usps4cb" />
+		</entry>
+
+	</items>
+</reportData>

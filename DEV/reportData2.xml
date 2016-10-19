@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<reportData>
+	<templetePath>F:\Workspace\WE_Report\source\Book1.xls</templetePath>
+	<xmlPath></xmlPath>
+	<reportId>testReport</reportId>
+	<outputPath>F:\Workspace\WE_Report\source\Book1_result.xls</outputPath>
+	<items>
+		<entry>
+			<key>NAME01</key>
+			<value key="" isLst="false" />
+		</entry>
+		<entry>
+			<key>ADDR01</key>
+			<value key="" isLst="false" />
+		</entry>
+		<entry>
+			<key>ADDR02</key>
+			<value key="" isLst="false" />
+		</entry>
+		<entry>
+			<key>NATION01</key>
+			<value key="" isLst="false" />
+		</entry>
+		<entry>
+			<key>TEL01</key>
+			<value key="" isLst="false" />
+		</entry>
+		<entry>
+			<key>ZIP01</key>
+			<value key="" isLst="false" />
+		</entry>
+		<entry>
+			<key>NAME02</key>
+			<value key="" isLst="false" />
+		</entry>
+		<entry>
+			<key>ADDR03</key>
+			<value key="" isLst="false" />
+		</entry>
+		<entry>
+			<key>ADDR04</key>
+			<value key="" isLst="false" />
+		</entry>
+		<entry>
+			<key>NATION02</key>
+			<value key="" isLst="false" />
+		</entry>
+		<entry>
+			<key>TEL01</key>
+			<value key="" isLst="false" />
+		</entry>
+		<entry>
+			<key>ZIP01</key>
+			<value key="" isLst="false" />
+		</entry>
+		<entry>
+			<key>LST_DSCRPT</key>
+			<value key="" isLst="true" />
+		</entry>
+		<entry>
+			<key>LST_QNTT</key>
+			<value key="" isLst="true" />
+		</entry>
+		<entry>
+			<key>LST_UPRC</key>
+			<value key="" isLst="true" />
+		</entry>
+		<entry>
+			<key>LST_TAMT</key>
+			<value key="" isLst="true" />
+		</entry>
+		<entry>
+			<key>TCNT</key>
+			<value key="" isLst="false" />
+		</entry>
+		<entry>
+			<key>TAMT</key>
+			<value key="" isLst="false" />
+		</entry>
+	</items>
+</reportData>
