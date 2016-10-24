@@ -1,6 +1,7 @@
 package tool;
 
 import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Date;
@@ -12,6 +13,9 @@ import javax.mail.Transport;
 import javax.xml.bind.JAXB;
 
 import org.apache.poi.hpsf.MarkUnsupportedException;
+
+import com.google.gson.Gson;
+import com.google.gson.stream.JsonReader;
 
 public class ReportProc {
 
@@ -44,12 +48,12 @@ public class ReportProc {
 
 	}
 
-	public static String exportReport(ArrayList<LinkedHashMap<String, String>> dBData, String reportInfoPath)
+	public static String exportReport(ArrayList<LinkedHashMap<String, String>> dBData, ReportData reportData)
 			throws Exception {
 		String exportFilePath = null;
 
 		// Load Report Info
-		ReportData reportData = JAXB.unmarshal(reportInfoPath, ReportData.class);
+		//ReportData reportData = JAXB.unmarshal(reportInfoPath, ReportData.class);
 
 		// Data init for Report
 		convert2RD(reportData, dBData);
@@ -109,6 +113,16 @@ public class ReportProc {
 		commonUtil.deleteFile(tempExcelPath);
 
 		return exportFilePath;
+	}
+
+	public static ReportData initReportData(String reportInfoPath) throws Exception {
+
+		Gson gson = new Gson();
+
+		JsonReader jr = new JsonReader(new FileReader(reportInfoPath));
+		ReportData data = gson.fromJson(jr, ReportData.class);
+
+		return data;
 	}
 
 }

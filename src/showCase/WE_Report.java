@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
+import tool.ReportData;
 import tool.ReportProc;
 
 public class WE_Report {
@@ -88,13 +89,16 @@ public class WE_Report {
 		// make Dummy instead of Database
 		DBData = mkDummyData(20);
 
-		ReportProc.exportReport(DBData, reportInfoPath);
+
+
+
+		ReportProc.exportReport(DBData, ReportProc.initReportData(reportInfoPath));
 
 		// test Excel
 		reportInfoPath = System.getProperty("user.dir") + "\\reportInfo\\reportInfo_templete_EXCEL.xml";
 		DBData = WE_Report.mkDummyData(20);
 
-		System.out.println(ReportProc.exportReport(DBData, reportInfoPath));
+		System.out.println(ReportProc.exportReport(DBData, ReportProc.initReportData(reportInfoPath)));
 
 		// test send mail
 		reportInfoPath = System.getProperty("user.dir") + "\\reportInfo\\reportInfo_templete_MAIL.xml";
@@ -102,7 +106,7 @@ public class WE_Report {
 		System.out.println('-');
 		DBData = WE_Report.mkDummyData(5);
 
-		System.out.println(ReportProc.exportReport(DBData, reportInfoPath));
+		System.out.println(ReportProc.exportReport(DBData, ReportProc.initReportData(reportInfoPath)));
 
 	}
 

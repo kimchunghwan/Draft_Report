@@ -1,10 +1,15 @@
 package showCase;
 
-import java.io.File;
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
+
 import org.junit.Test;
 
+import com.google.gson.Gson;
+import com.google.gson.stream.JsonReader;
+
+import tool.ReportData;
 import tool.ReportProc;
 
 public class test {
@@ -13,20 +18,21 @@ public class test {
 
 	@Test
 	public void test() throws Exception {
-		// TODO insert row
 
 		// test PDF
-		String reportInfoPath = System.getProperty("user.dir")+"\\reportInfo\\reportInfo_templete_MAIL.xml";
+		String reportInfoPath = "";
 
-		System.out.println('-');
 		DBData = WE_Report.mkDummyData(5);
-		//
 
+		reportInfoPath = System.getProperty("user.dir")+"\\reportInfo\\reportInfo_templete_MAIL.json";
 
-		System.out.println();
+		ReportData rd = ReportProc.initReportData(reportInfoPath);
 
-		System.out.println(ReportProc.exportReport(DBData, reportInfoPath));
+		System.out.println(ReportProc.exportReport(DBData, rd));
+
 
 	}
+
+
 
 }
