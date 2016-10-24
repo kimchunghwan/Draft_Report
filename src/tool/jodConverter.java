@@ -7,25 +7,43 @@ import org.artofsolving.jodconverter.office.DefaultOfficeManagerConfiguration;
 import org.artofsolving.jodconverter.office.OfficeManager;
 
 public class jodConverter {
-
-
+W
+	/**
+	 * version Windows OS
+	 * 
+	 * @param excelPath
+	 * @param exportPath
+	 */
 	public static void convertFile(String excelPath, String exportPath) {
 		DefaultOfficeManagerConfiguration config = new DefaultOfficeManagerConfiguration();
 
 		// とりあえずサンプルなのでベタに設定
-		config.setOfficeHome("C:\\Program Files (x86)\\LibreOffice 5");
+		String osName = System.getProperty("os.name");
+		System.out.println(osName);
+		// Windows OS
+		// config.setOfficeHome("C:\\Program Files (x86)\\LibreOffice 5");
+		// Windows linux
+		if(osName.toLowerCase().contains("windows")){
+			config.setOfficeHome("/usr/lib/libreoffice");
+		}else if(osName.toLowerCase().contains("linux")){
+			config.setPortNumber(8100);
+		}else {
+			System.out.println("ERROR : not fined match OS");
+		}
+		
 
-		config.setPortNumber(8100);
+		
 
 		// //本来はタイムアウトの設定とかもしたほうが良い
 
 		OfficeManager officeManager = config.buildOfficeManager();
 		officeManager.start();
 
-		OfficeDocumentConverter converter = new OfficeDocumentConverter(
-				officeManager);
+		OfficeDocumentConverter converter = new OfficeDocumentConverter(officeManager);
 
 		File tempExcelFile = new File(excelPath);
+
+		WeFile.checkAndMakeDirectory(exportPath);
 		File exportFile = new File(exportPath);
 
 		converter.convert(tempExcelFile, exportFile);
@@ -35,7 +53,9 @@ public class jodConverter {
 
 	}
 
-	//TODO check environment linux
+	// TODO check environment linux
+	public static void convertFileL(String excelPath, String exportPath) {
 
+	}
 
 }
