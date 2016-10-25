@@ -7,34 +7,27 @@ import org.artofsolving.jodconverter.office.DefaultOfficeManagerConfiguration;
 import org.artofsolving.jodconverter.office.OfficeManager;
 
 public class jodConverter {
-W
+
 	/**
-	 * version Windows OS
-	 * 
+	 * 오피스 폴더에 대해서는 이후에 따로 최적화가 필요함 .
+	 *
 	 * @param excelPath
 	 * @param exportPath
 	 */
 	public static void convertFile(String excelPath, String exportPath) {
 		DefaultOfficeManagerConfiguration config = new DefaultOfficeManagerConfiguration();
 
-		// とりあえずサンプルなのでベタに設定
 		String osName = System.getProperty("os.name");
-		System.out.println(osName);
-		// Windows OS
-		// config.setOfficeHome("C:\\Program Files (x86)\\LibreOffice 5");
-		// Windows linux
-		if(osName.toLowerCase().contains("windows")){
+
+		// TODO 오피스 폴더 경로 설정하는 부분을 config 파일에 정의 하기
+		if (osName.toLowerCase().contains("windows")) {
+			config.setOfficeHome("C:\\Program Files (x86)\\LibreOffice 5");
+		} else if (osName.toLowerCase().contains("linux")) {
 			config.setOfficeHome("/usr/lib/libreoffice");
-		}else if(osName.toLowerCase().contains("linux")){
-			config.setPortNumber(8100);
-		}else {
+		} else {
 			System.out.println("ERROR : not fined match OS");
 		}
-		
-
-		
-
-		// //本来はタイムアウトの設定とかもしたほうが良い
+		config.setPortNumber(8100);
 
 		OfficeManager officeManager = config.buildOfficeManager();
 		officeManager.start();
@@ -50,11 +43,6 @@ W
 		System.out.println("出力完了：" + exportPath);
 
 		officeManager.stop();
-
-	}
-
-	// TODO check environment linux
-	public static void convertFileL(String excelPath, String exportPath) {
 
 	}
 
