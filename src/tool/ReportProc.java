@@ -1,5 +1,6 @@
 package tool;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.InputStream;
@@ -26,7 +27,6 @@ public class ReportProc {
 	private static final String MAIL_HTML_UTF8 = "text/html; charset=utf-8";
 
 	/***
-	 * データベースの取得結果をレポート用のデータに変換
 	 *
 	 * @param reportData
 	 * @param arrData2
@@ -48,12 +48,13 @@ public class ReportProc {
 
 	}
 
-	public static String exportReport(ArrayList<LinkedHashMap<String, String>> dBData, ReportData reportData)
+	public static String exportReport(ArrayList<LinkedHashMap<String, String>> dBData, ReportData reportData, jodConverter jodconverter)
 			throws Exception {
 		String exportFilePath = null;
 
 		// Load Report Info
-		//ReportData reportData = JAXB.unmarshal(reportInfoPath, ReportData.class);
+		// ReportData reportData = JAXB.unmarshal(reportInfoPath,
+		// ReportData.class);
 
 		// Data init for Report
 		convert2RD(reportData, dBData);
@@ -62,7 +63,7 @@ public class ReportProc {
 
 		case REPORT_TYPE_PDF:
 
-			exportFilePath = exportFile(reportData, ".pdf");
+			exportFilePath = exportFile(reportData, ".pdf",jodconverter);
 
 			break;
 
@@ -75,7 +76,7 @@ public class ReportProc {
 			Message msg = ReportMail.init(reportData);
 
 			// make Contents
-			exportFilePath = exportFile(reportData, ".html");
+			exportFilePath = exportFile(reportData, ".html",jodconverter);
 
 			InputStream in = new FileInputStream(exportFilePath);
 			System.out.println(in.toString());
@@ -103,11 +104,12 @@ public class ReportProc {
 
 	}
 
-	private static String exportFile(ReportData reportData, String mime) throws Exception {
+	private static String exportFile(ReportData reportData, String mime, jodConverter jodconverter) throws Exception {
 
 		String tempExcelPath = ReportExcel.exportExcel(reportData);
-		String exportFilePath = reportData.getExportFolder() + reportData.exportFileNM + mime;
-		jodConverter.convertFile(tempExcelPath, exportFilePath);
+		String exportFilePath = reportData.getExportFolder() + reportData.exportFileNM
+				+ commonUtil.getStringDatetimeForFile(new Date()) + mime;
+		jodconverter.convertFile(tempExcelPath, exportFilePath, reportData.getExportFolder());
 
 		// tempFile delete
 		commonUtil.deleteFile(tempExcelPath);
@@ -123,6 +125,13 @@ public class ReportProc {
 		ReportData data = gson.fromJson(jr, ReportData.class);
 
 		return data;
+	}
+
+	// TODO JAXB ERROR on Linux
+	public static ReportData initReportDataXML(String reportInfoPath) throws Exception {
+
+		return JAXB.unmarshal(new File(reportInfoPath), ReportData.class);
+
 	}
 
 }

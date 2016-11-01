@@ -13,13 +13,16 @@ import org.krysalis.barcode4j.output.bitmap.BitmapCanvasProvider;
 import org.krysalis.barcode4j.tools.MimeTypes;
 
 /*
+ *
+ * Using barcode4j
  * @author KISSCO
+ *
  */
 public class barCode {
 
 	/**
 	 * バーコードイメージ 情報設定
-	 * 
+	 *
 	 * @param barcodeData
 	 * @param barcodeType
 	 * @return outputFile 出力位置
@@ -52,7 +55,7 @@ public class barCode {
 
 	/**
 	 * バーコードイメージ作成
-	 * 
+	 *
 	 * @param barcodeType
 	 * @param barcodeData
 	 * @param fileFormat
@@ -64,6 +67,8 @@ public class barCode {
 	private static void createBarcode(String barcodeType, String barcodeData,
 			String fileFormat, boolean isAntiAliasing, int dpi, String outputFile) {
 		try {
+
+
 			AbstractBarcodeBean bean = null;
 
 			BarcodeClassResolver resolver = new DefaultBarcodeClassResolver();

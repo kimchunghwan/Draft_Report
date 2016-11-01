@@ -129,7 +129,8 @@ public class ReportExcel {
 			}
 		}
 
-		String exportPath = rd.getExportFolder() + rd.exportFileNM + ".xls";
+		String exportPath = rd.getExportFolder() + rd.exportFileNM + commonUtil.getStringDatetimeForFile(new Date())
+				+ ".xls";
 
 		if (rd.reportType == ReportProc.REPORT_TYPE_PDF) {
 			exportPath = commonUtil.getTempFolder() + rd.exportFileNM + commonUtil.getStringDatetimeForFile(new Date())

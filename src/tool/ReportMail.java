@@ -10,6 +10,11 @@ import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+/***
+ *
+ * @author
+ *
+ */
 public class ReportMail {
 
 	public static final String ADDRESS_PREFIX = "ADDR_";
@@ -30,7 +35,7 @@ public class ReportMail {
 		props.put("mail.smtp.host", reportData.smtpHost);
 		props.put("mail.smtp.port", reportData.smtpPort);
 
-		// TODO case by case
+		// TODO case by case : depending on the smtp server
 		Session session = Session.getInstance(props, new javax.mail.Authenticator() {
 			@Override
 			protected PasswordAuthentication getPasswordAuthentication() {

@@ -8,6 +8,7 @@ import java.util.LinkedHashMap;
 
 import tool.ReportData;
 import tool.ReportProc;
+import tool.jodConverter;
 
 public class WE_Report {
 
@@ -15,6 +16,11 @@ public class WE_Report {
 	private static PreparedStatement preStatement = null;
 	static LinkedHashMap<String, String> lstData = null;
 	public static ArrayList<LinkedHashMap<String, String>> DBData = null;
+
+	static String[] lstReportInfo = {
+
+			"\\reportInfo\\reportInfo_templete_PDF.json", "\\reportInfo\\reportInfo_templete_EXCEL.json",
+			"\\reportInfo\\reportInfo_templete_MAIL.json" };
 
 	public static ArrayList<LinkedHashMap<String, String>> mkDummyData(int maxCnt) {
 
@@ -79,34 +85,45 @@ public class WE_Report {
 		} catch (Exception e) {
 			setDataiferror();
 			System.out.println("ERRRR");
-		} finally {
-			setDataiferror();
-			System.out.println("ERRRR");
+		}
+		jodConverter jodconverter = new jodConverter();
+
+		for (String reportInfo : lstReportInfo) {
+
+			// test PDF
+			String reportInfoPath = System.getProperty("user.dir") + reportInfo;
+			// make Dummy instead of Database
+			DBData = mkDummyData(20);
+
+			ReportProc.exportReport(DBData, ReportProc.initReportData(reportInfoPath), jodconverter);
+
 		}
 
-		// test PDF
-		String reportInfoPath = System.getProperty("user.dir") + "\\reportInfo\\reportInfo_templete_PDF.xml";
-		// make Dummy instead of Database
-		DBData = mkDummyData(20);
-
-
-
-
-		ReportProc.exportReport(DBData, ReportProc.initReportData(reportInfoPath));
-
-		// test Excel
-		reportInfoPath = System.getProperty("user.dir") + "\\reportInfo\\reportInfo_templete_EXCEL.xml";
-		DBData = WE_Report.mkDummyData(20);
-
-		System.out.println(ReportProc.exportReport(DBData, ReportProc.initReportData(reportInfoPath)));
-
-		// test send mail
-		reportInfoPath = System.getProperty("user.dir") + "\\reportInfo\\reportInfo_templete_MAIL.xml";
-
-		System.out.println('-');
-		DBData = WE_Report.mkDummyData(5);
-
-		System.out.println(ReportProc.exportReport(DBData, ReportProc.initReportData(reportInfoPath)));
+		// // test PDF
+		// String reportInfoPath = System.getProperty("user.dir") +
+		// "\\reportInfo\\reportInfo_templete_PDF.json";
+		// // make Dummy instead of Database
+		// DBData = mkDummyData(20);
+		//
+		// ReportProc.exportReport(DBData,
+		// ReportProc.initReportData(reportInfoPath), jodconverter);
+		//
+		// // test Excel
+		// reportInfoPath = System.getProperty("user.dir") +
+		// "\\reportInfo\\reportInfo_templete_EXCEL.json";
+		// DBData = WE_Report.mkDummyData(20);
+		//
+		// ReportProc.exportReport(DBData,
+		// ReportProc.initReportData(reportInfoPath), jodconverter);
+		//
+		// // test send mail
+		// reportInfoPath = System.getProperty("user.dir") +
+		// "\\reportInfo\\reportInfo_templete_MAIL.json";
+		//
+		// DBData = WE_Report.mkDummyData(5);
+		//
+		// ReportProc.exportReport(DBData,
+		// ReportProc.initReportData(reportInfoPath), jodconverter);
 
 	}
 
