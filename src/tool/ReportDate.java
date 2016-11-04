@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class WeDate {
+public class ReportDate {
 
 	public static final String FORMAT_DATE = "yyyy/MM/dd";
 
@@ -21,11 +21,11 @@ public class WeDate {
 	}
 
 	public static String getSysDate() {
-		return getSysDateTime(WeDate.FORMAT_DATE);
+		return getSysDateTime(ReportDate.FORMAT_DATE);
 	}
 
 	public static String getSysDateTime() {
-		return getSysDateTime(WeDate.FORMAT_DATETIME);
+		return getSysDateTime(ReportDate.FORMAT_DATETIME);
 	}
 
 	public static String getSysDateTime(String formatStr) {
@@ -34,7 +34,7 @@ public class WeDate {
 	}
 
 	public static Calendar toCalendar(String dateStr) throws ParseException {
-		return toCalendar(dateStr, WeDate.FORMAT_DATE);
+		return toCalendar(dateStr, ReportDate.FORMAT_DATE);
 	}
 
 	public static Calendar toCalendar(String dateStr, String formatStr) throws ParseException {
@@ -56,11 +56,11 @@ public class WeDate {
 
 	public static int compareTo(String fromDate, String toDate) {
 		if (commonUtil.isNullOrEmpty(fromDate) == true) {
-			fromDate = WeDate.DATE_MIN;
+			fromDate = ReportDate.DATE_MIN;
 		}
 
 		if (commonUtil.isNullOrEmpty(toDate) == true) {
-			toDate = WeDate.DATE_MAX;
+			toDate = ReportDate.DATE_MAX;
 		}
 		int result = fromDate.compareTo(toDate);
 		return result;

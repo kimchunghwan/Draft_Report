@@ -6,7 +6,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class WeFile {
+public class ReportFile {
 	public static final String EXT_SQL = ".sql";
 
 	public static final String EXT_XLSX = ".xlsx";
@@ -65,9 +65,9 @@ public class WeFile {
 		}
 	}
 
-	
+
 	/*
-	 * check file exist 
+	 * check file exist
 	 */
 	public static Boolean existFile(String filePath) {
 		File file = new File(filePath);
@@ -81,7 +81,7 @@ public class WeFile {
 	public static String getNextFileName(final String filePath, final String prefix, final String extension) {
 
 		File fileDir = new File(filePath);
-		String strDate = WeDate.getSysDateTime("yyMMdd");
+		String strDate = ReportDate.getSysDateTime("yyMMdd");
 		StringBuilder regex = new StringBuilder();
 		regex.append('^');
 		regex.append(prefix);

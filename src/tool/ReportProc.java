@@ -75,15 +75,15 @@ public class ReportProc {
 			// mail setting for send
 			Message msg = ReportMail.init(reportData);
 
-			// make Contents
+			// make contents
 			exportFilePath = exportFile(reportData, ".html",jodconverter);
 
 			InputStream in = new FileInputStream(exportFilePath);
-			System.out.println(in.toString());
-			// set Contents
+
+			// set contents
 			msg.setSubject("Testing Subject");
 
-			msg.setContent(WeFile.readFile(exportFilePath, WeFile.CHARSET_UTF8), MAIL_HTML_UTF8);
+			msg.setContent(ReportFile.readFile(exportFilePath, ReportFile.CHARSET_UTF8), MAIL_HTML_UTF8);
 			msg.setSentDate(new Date());
 
 			// send mail

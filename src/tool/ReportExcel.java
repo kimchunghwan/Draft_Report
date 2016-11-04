@@ -138,7 +138,7 @@ public class ReportExcel {
 		}
 
 		// check File exist
-		if (WeFile.existFile(exportPath)) {
+		if (ReportFile.existFile(exportPath)) {
 			System.out.println("ERROR: File exist_" + exportPath);
 			throw new IOException();
 		}

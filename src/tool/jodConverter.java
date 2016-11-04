@@ -20,7 +20,8 @@ public class jodConverter {
 
 		// TODO 오피스 폴더 경로 설정하는 부분을 config 파일에 정의 하기
 		if (osName.toLowerCase().contains("windows")) {
-			config.setOfficeHome("C:\\Program Files (x86)\\LibreOffice 5");
+			//config.setOfficeHome("C:\\Program Files (x86)\\LibreOffice 5");
+			config.setOfficeHome("F:\\LibreOffice 5");
 		} else if (osName.toLowerCase().contains("linux")) {
 			config.setOfficeHome("/usr/lib/libreoffice");
 		} else {
@@ -67,7 +68,7 @@ public class jodConverter {
 
 		File tempExcelFile = new File(excelPath);
 
-		WeFile.checkAndMakeDirectory(exportFolderPath);
+		ReportFile.checkAndMakeDirectory(exportFolderPath);
 
 		File exportFile = new File(exportPath);
 
