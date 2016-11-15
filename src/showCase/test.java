@@ -1,10 +1,12 @@
 package showCase;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.InputStreamReader;
 import java.io.Writer;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -99,7 +101,56 @@ public class test {
 		jcon.convertFile("F:\\05_Java\\workspace\\WE_Report_github\\export\\templete01_Excel_result_testjod.xls",
 				"F:\\05_Java\\workspace\\WE_Report_github\\export\\templete01_Excel_result_testjod_convert.pdf",
 				"F:\\05_Java\\workspace\\WE_Report_github\\export\\");
+	}
 
+	@Test
+	public void MsConverter() {
+		try {
+
+			String exe = "F:\\05_Java\\workspace\\Simple_Report\\source\\converter.exe";
+			String inFile = "F:\\05_Java\\workspace\\Simple_Report\\source\\test_converter.xls";
+			String outFile = "F:\\05_Java\\workspace\\Simple_Report\\source\\result_converter.xls";
+			String outFolder = "F:\\05_Java\\workspace\\Simple_Report\\source\\result_converter.xls";
+
+			convertPdf(inFile, outFile, outFolder);
+
+			String[] arrCmd = { exe, inFile, outFile };
+
+			Process p = Runtime.getRuntime().exec(arrCmd);
+			BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream()));
+			String line = null;
+
+			// TODO CONVERTER結果を確認し、例外の場合確認を行うこと。
+			while ((line = br.readLine()) != null) {
+				System.out.println(line);
+			}
+
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+
+	private void convertPdf(String inFile, String outFile, String outFolder) throws Exception {
+
+		String exe = "F:\\05_Java\\workspace\\Simple_Report\\source\\converter.exe";
+
+		String[] arrCmd = { exe, inFile, outFile };
+
+		Process p = Runtime.getRuntime().exec(arrCmd);
+		BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream()));
+		String line = null;
+
+		// TODO CONVERTER結果を確認し、例外の場合確認を行うこと。
+		while ((line = br.readLine()) != null) {
+			System.out.println(line);
+		}
+
+	}
+
+	@Test
+	private void torihikiseikyusyo() {
+
+		// TODO Auto-generated method stub
 
 	}
 

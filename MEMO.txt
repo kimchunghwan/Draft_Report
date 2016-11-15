@@ -14,7 +14,7 @@ TODO
 -Config 파일로 옮겨야 할것들
  -JODconverter path 값
  -temp 폴더
- -
+
 
 
 ★optimize
@@ -85,9 +85,8 @@ TODO：その他
 
 -帳票印刷の確認：ドットプリンター
 -EISANプロジェクトにマージ作業必要
-　-CONVERTER用のPORT必要、Multi Thread 確認
+-CONVERTER用のPORT必要、Multi Thread 確認
 -CONVERTERライブラリのVOLUME縮小
-
 
 TIP
 	JODconverter able to set multi port numbers
@@ -97,7 +96,6 @@ TIP
 
 	유저쪽에서 템플릿의 디자인을 바꿀경우 .. 수정한 템플릿에 대한 체크처리가 필요할것으로 생각이 된다.
 	정의되어 있는 입력항목 이외의 값이 있거나 혹은 정의되어 있는 항목이 없거나 한 경우 체크가 필요하다.
-
 
 <20161107>
 파일 포멧변환 라이브러를 어떤 것을 사용할 것인지 고려중
@@ -125,5 +123,3 @@ TODO
 
 <20161110>
  -
-
-

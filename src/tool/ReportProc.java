@@ -109,6 +109,7 @@ public class ReportProc {
 		String tempExcelPath = ReportExcel.exportExcel(reportData);
 		String exportFilePath = reportData.getExportFolder() + reportData.exportFileNM
 				+ commonUtil.getStringDatetimeForFile(new Date()) + mime;
+
 		jodconverter.convertFile(tempExcelPath, exportFilePath, reportData.getExportFolder());
 
 		// tempFile delete

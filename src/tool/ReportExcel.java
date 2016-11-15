@@ -9,9 +9,15 @@ import java.util.Map.Entry;
 
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
+import org.apache.poi.hssf.usermodel.HSSFDataFormat;
+import org.apache.poi.hssf.usermodel.HSSFFormulaEvaluator;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.ss.usermodel.CellValue;
 import org.apache.poi.ss.usermodel.ClientAnchor;
 import org.apache.poi.ss.usermodel.CreationHelper;
 import org.apache.poi.ss.usermodel.Drawing;
@@ -25,12 +31,16 @@ public class ReportExcel {
 	public static final String REPLACE_TYPE_STRING = "STRING";
 	public static final String REPLACE_TYPE_IMG = "IMAGE";
 	public static final String REPLACE_TYPE_BARCODE = "BARCODE";
-	private static final String REPLACE_KEY = "@@";
+	public static final String REPLACE_KEY = "@@";
+	public static final String REPLACE_TYPE_NUMERIC = "NUMERIC";
+	public static final String REPLACE_EMPTY = "";
+
 
 	public static String exportExcel(ReportData rd) throws Exception {
 
 		FileInputStream in = new FileInputStream(rd.getTempletePath());
 		HSSFWorkbook wb = new HSSFWorkbook(in);
+		HSSFFormulaEvaluator fe = new HSSFFormulaEvaluator(wb);
 		HSSFSheet sh;
 
 		int maxPage = 1;
@@ -70,6 +80,9 @@ public class ReportExcel {
 
 					// do replace
 					HSSFCell cell = row.getCell(idxCell);
+					if (cell.getCellType() != Cell.CELL_TYPE_STRING)
+						continue;
+
 					String value = cell.getStringCellValue();
 
 					if (value.startsWith(REPLACE_KEY)) {
@@ -77,6 +90,7 @@ public class ReportExcel {
 						ReportItem item = rd.getItem(value.replaceAll(REPLACE_KEY, ""));
 
 						if (null == item) {
+							cell.setCellValue(REPLACE_EMPTY);
 							continue;
 						}
 
@@ -127,7 +141,11 @@ public class ReportExcel {
 					}
 				}
 			}
+
 		}
+
+		//refresh
+		HSSFFormulaEvaluator.evaluateAllFormulaCells(wb);
 
 		String exportPath = rd.getExportFolder() + rd.exportFileNM + commonUtil.getStringDatetimeForFile(new Date())
 				+ ".xls";
@@ -173,6 +191,13 @@ public class ReportExcel {
 
 			targetCell.setCellValue(val);
 
+			break;
+		case REPLACE_TYPE_NUMERIC:
+			CellStyle cs = targetCell.getCellStyle();
+			targetCell.setCellValue("0");
+			cs.setDataFormat(HSSFDataFormat.getBuiltinFormat("0"));
+			targetCell.setCellStyle(cs);
+			targetCell.setCellValue(Double.parseDouble(val));
 			break;
 		case REPLACE_TYPE_IMG:
 

@@ -64,7 +64,7 @@
 		</entry>
 		<entry>
 			<key>LST_QNTT</key>
-			<value type="STRING" isLst="true" />
+			<value type="NUMERIC" isLst="true" />
 		</entry>
 		<entry>
 			<key>LST_UPRC</key>

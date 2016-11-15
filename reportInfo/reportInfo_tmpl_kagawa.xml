@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<reportData>
+	<templetePath>\templete\tmple_sagawa00.xls</templetePath>
+	<reportId>testReport</reportId>
+	<exportFolder>\export\</exportFolder>
+	<exportFileNM>tmple_sagawa00_result</exportFileNM>
+	<!-- if maxLstPerPage is 0 : express all list on a Page   -->
+	<!-- if maxLstPerPage is not 0 : seperate page for List   -->
+	<maxLstPerPage>8</maxLstPerPage>
+	<!-- reportType: [0-Pdf][1-Excel][2-Email][3-CSV] -->
+	<reportType>1</reportType>
+	<items>
+		<entry>
+			<key>POST1</key>
+			<value type="NUMERIC" isLst="false" />
+		</entry>
+		<entry>
+			<key>POST2</key>
+			<value type="NUMERIC" isLst="false" />
+		</entry>
+		<entry>
+			<key>TO</key>
+			<value type="STRING" isLst="false" />
+		</entry>
+		<entry>
+			<key>QUAN</key>
+			<value type="NUMERIC" isLst="false" />
+		</entry>
+		<entry>
+			<key>PRODUCTNAME</key>
+			<value type="STRING" isLst="false" />
+		</entry>
+		<entry>
+			<key>TO</key>
+			<value type="STRING" isLst="false" />
+		</entry>
+		<entry>
+			<key>TEL1</key>
+			<value type="STRING" isLst="false" />
+		</entry>
+		<entry>
+			<key>TEL2</key>
+			<value type="STRING" isLst="false" />
+		</entry>
+		<entry>
+			<key>POST3</key>
+			<value type="STRING" isLst="false" />
+		</entry>
+		<entry>
+			<key>POST4</key>
+			<value type="STRING" isLst="false" />
+		</entry>
+		<entry>
+			<key>OPTION1</key>
+			<value type="STRING" isLst="false" />
+		</entry>
+	</items>
+</reportData>

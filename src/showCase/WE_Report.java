@@ -65,6 +65,19 @@ public class WE_Report {
 			imap.put("ADDR_FROM", "chunghkim@kissco.co.jp");
 			imap.put("BARCODE_usps4cb", "12345678901234567890");
 
+			//tmpl_sagawa
+			imap.put("POST1", "206");
+			imap.put("POST2", "9999");
+			imap.put("TO", "東京都新宿区西早稲田東ウィング");
+			imap.put("QUAN", "999");
+			imap.put("PRODUCTNAME", "ＥＩＳＡＮＥＲＰシステム");
+			imap.put("OPTION1", "Ｖ");
+			imap.put("TEL1", "080-1234-5678");
+			imap.put("POST3", "999");
+			imap.put("POST4", "9876");
+			imap.put("FROM", "東京都新宿区西早稲田東ウィング");
+			imap.put("TEL2", "080-1234-5678");
+
 			lstMap.add(imap);
 		}
 
@@ -99,31 +112,45 @@ public class WE_Report {
 
 		}
 
-		// // test PDF
-		// String reportInfoPath = System.getProperty("user.dir") +
-		// "\\reportInfo\\reportInfo_templete_PDF.json";
-		// // make Dummy instead of Database
-		// DBData = mkDummyData(20);
-		//
-		// ReportProc.exportReport(DBData,
-		// ReportProc.initReportData(reportInfoPath), jodconverter);
-		//
-		// // test Excel
-		// reportInfoPath = System.getProperty("user.dir") +
-		// "\\reportInfo\\reportInfo_templete_EXCEL.json";
-		// DBData = WE_Report.mkDummyData(20);
-		//
-		// ReportProc.exportReport(DBData,
-		// ReportProc.initReportData(reportInfoPath), jodconverter);
-		//
-		// // test send mail
-		// reportInfoPath = System.getProperty("user.dir") +
-		// "\\reportInfo\\reportInfo_templete_MAIL.json";
-		//
-		// DBData = WE_Report.mkDummyData(5);
-		//
-		// ReportProc.exportReport(DBData,
-		// ReportProc.initReportData(reportInfoPath), jodconverter);
+		 // test PDF
+		 String reportInfoPath = System.getProperty("user.dir") +
+		 "\\reportInfo\\reportInfo_templete_PDF.json";
+		 // make Dummy instead of Database
+		 DBData = mkDummyData(20);
+
+		 ReportProc.exportReport(DBData,
+		 ReportProc.initReportData(reportInfoPath), jodconverter);
+
+		 // test Excel
+		 reportInfoPath = System.getProperty("user.dir") +
+		 "\\reportInfo\\reportInfo_templete_EXCEL.json";
+		 DBData = WE_Report.mkDummyData(20);
+
+		 ReportProc.exportReport(DBData,
+		 ReportProc.initReportData(reportInfoPath), jodconverter);
+
+		 // test send mail
+		 reportInfoPath = System.getProperty("user.dir") +
+		 "\\reportInfo\\reportInfo_templete_MAIL.json";
+
+		 DBData = WE_Report.mkDummyData(5);
+
+		 ReportProc.exportReport(DBData,
+		 ReportProc.initReportData(reportInfoPath), jodconverter);
+
+		 reportInfoPath = System.getProperty("user.dir") +
+		 "\\reportInfo\\reportInfo_tmpl_kagawa.xml";
+
+		 DBData = WE_Report.mkDummyData(5);
+
+		 ReportProc.exportReport(DBData,
+		 ReportProc.initReportDataXML(reportInfoPath), jodconverter);
+
+
+
+
+
+
 
 	}
 
