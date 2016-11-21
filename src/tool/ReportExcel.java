@@ -193,12 +193,14 @@ public class ReportExcel {
 
 			break;
 		case REPLACE_TYPE_NUMERIC:
+
 			CellStyle cs = targetCell.getCellStyle();
 			targetCell.setCellValue("0");
 			cs.setDataFormat(HSSFDataFormat.getBuiltinFormat("0"));
 			targetCell.setCellStyle(cs);
 			targetCell.setCellValue(Double.parseDouble(val));
 			break;
+
 		case REPLACE_TYPE_IMG:
 
 			replaceImg(val, wb, sh, targetCell);
