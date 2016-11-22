@@ -1,63 +1,62 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <reportData>
-	<templetePath>\templete\tmple_sagawa00.xls</templetePath>
+	<templetePath>\templete\取引会社請求書.xls</templetePath>
 	<reportId>testReport</reportId>
 	<exportFolder>\export\</exportFolder>
-	<exportFileNM>tmple_sagawa00_result</exportFileNM>
-	<!-- if maxLstPerPage is 0 : express all list on a Page -->
-	<!-- if maxLstPerPage is not 0 : seperate page for List -->
+	<exportFileNM>tmple_取引会社請求書_result</exportFileNM>
+	<!-- if maxLstPerPage is 0 : express all list on a Page   -->
+	<!-- if maxLstPerPage is not 0 : seperate page for List   -->
 	<maxLstPerPage>8</maxLstPerPage>
 	<!-- reportType: [0-Pdf][1-Excel][2-Email][3-CSV] -->
 	<reportType>1</reportType>
-	<!--  attribute type NUMERIC is for fomula type cell -->
 	<items>
 		<entry>
-			<key>POST1</key>
+			<key>ARTICLE</key>
 			<value type="STRING" isLst="false" />
 		</entry>
 		<entry>
-			<key>POST2</key>
+			<key>DATE</key>
 			<value type="STRING" isLst="false" />
 		</entry>
 		<entry>
-			<key>TO</key>
+			<key>LOCATE</key>
 			<value type="STRING" isLst="false" />
 		</entry>
 		<entry>
-			<key>QUAN</key>
+			<key>CONDITION</key>
+			<value type="STRING" isLst="false" />
+		</entry>
+		<entry>
+			<key>DATE1</key>
+			<value type="STRING" isLst="false" />
+		</entry>
+		<entry>
+			<key>SHIPNO</key>
+			<value type="STRING" isLst="false" />
+		</entry>
+		<entry>
+			<key>USERNM</key>
+			<value type="STRING" isLst="false" />
+		</entry>
+		<entry>
+			<key>USERMAIL</key>
 			<value type="STRING" isLst="false" />
 		</entry>
 		<entry>
 			<key>PRODUCTNAME</key>
-			<value type="STRING" isLst="false" />
+			<value type="STRING" isLst="true" />
 		</entry>
 		<entry>
-			<key>TO</key>
-			<value type="STRING" isLst="false" />
+			<key>QUANTITY</key>
+			<value type="NUMERIC" isLst="true" />
 		</entry>
 		<entry>
-			<key>TEL1</key>
-			<value type="STRING" isLst="false" />
+			<key>PRICE</key>
+			<value type="NUMERIC" isLst="true" />
 		</entry>
 		<entry>
-			<key>TEL2</key>
-			<value type="STRING" isLst="false" />
-		</entry>
-		<entry>
-			<key>POST3</key>
-			<value type="STRING" isLst="false" />
-		</entry>
-		<entry>
-			<key>POST4</key>
-			<value type="STRING" isLst="false" />
-		</entry>
-		<entry>
-			<key>OPTION1</key>
-			<value type="STRING" isLst="false" />
-		</entry>
-		<entry>
-			<key>ARTICLENO</key>
-			<value type="STRING" isLst="false" />
+			<key>AMOUNT</key>
+			<value type="NUMERIC" isLst="true" />
 		</entry>
 	</items>
 </reportData>

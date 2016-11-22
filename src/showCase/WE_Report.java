@@ -65,6 +65,14 @@ public class WE_Report {
 
 		ReportProc.exportReport(DBData, ReportProc.initReportDataXML(reportInfoPath), jodconverter);
 
+		// 合計請求書
+		reportInfoPath = System.getProperty("user.dir") + "\\reportInfo\\reportInfo_tmpl_合計請求書_329N.xml";
+
+		DBData = DummyData.mkDummyData(5);
+
+		ReportProc.exportReport(DBData, ReportProc.initReportDataXML(reportInfoPath), jodconverter);
+
+
 		// torihiki
 		reportInfoPath = System.getProperty("user.dir") + "\\reportInfo\\reportInfo_tmpl_取引会社請求書.xml";
 

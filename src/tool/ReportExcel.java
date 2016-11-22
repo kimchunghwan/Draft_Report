@@ -1,11 +1,14 @@
 package tool;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Date;
 import java.util.Map.Entry;
+
+import javax.activation.MimetypesFileTypeMap;
 
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
@@ -35,6 +38,13 @@ public class ReportExcel {
 	public static final String REPLACE_TYPE_NUMERIC = "NUMERIC";
 	public static final String REPLACE_EMPTY = "";
 
+	/**
+	 * String seperate for display
+	 */
+	public static final String REPLACE_TYPE_STRING_SP = "STRING_SP";
+	public static final String REPLACE_TYPE_STRING_SP2 = "STRING_SP2";
+	public static final String REPLACE_TYPE_SP2 = "  ";
+	public static final String REPLACE_TYPE_SP = " ";
 
 	public static String exportExcel(ReportData rd) throws Exception {
 
@@ -62,7 +72,6 @@ public class ReportExcel {
 			}
 		}
 
-		// TODO catch list Row and insert Row
 		for (int pageIdx = 0; pageIdx < maxPage; pageIdx++) {
 			sh = wb.getSheetAt(pageIdx);
 
@@ -106,7 +115,6 @@ public class ReportExcel {
 								// Case insert Row
 							} else {
 								maxCnt = maxLst;
-								// TODO insertRow
 								if (!doInsertRow) {
 									for (int i = 1; i < maxLst; i++) {
 										copyRow(wb, sh, cell.getRowIndex(), cell.getRowIndex() + 1);
@@ -144,7 +152,7 @@ public class ReportExcel {
 
 		}
 
-		//refresh
+		// refresh
 		HSSFFormulaEvaluator.evaluateAllFormulaCells(wb);
 
 		String exportPath = rd.getExportFolder() + rd.exportFileNM + commonUtil.getStringDatetimeForFile(new Date())
@@ -173,16 +181,6 @@ public class ReportExcel {
 
 	}
 
-	/***
-	 * データ入れ替え処理
-	 *
-	 * @param item
-	 * @param val
-	 * @param wb
-	 * @param sh
-	 * @param targetCell
-	 * @throws Exception
-	 */
 	private static void replaceData(ReportItem item, String val, HSSFWorkbook wb, HSSFSheet sh, HSSFCell targetCell)
 			throws Exception {
 
@@ -190,6 +188,16 @@ public class ReportExcel {
 		case REPLACE_TYPE_STRING:
 
 			targetCell.setCellValue(val);
+
+			break;
+		case REPLACE_TYPE_STRING_SP:
+
+			targetCell.setCellValue(stringSeperate(val, " "));
+
+			break;
+		case REPLACE_TYPE_STRING_SP2:
+
+			targetCell.setCellValue(stringSeperate(val, "  "));
 
 			break;
 		case REPLACE_TYPE_NUMERIC:
@@ -225,6 +233,21 @@ public class ReportExcel {
 
 	}
 
+	private static String stringSeperate(String val, String seperate) {
+		StringBuilder sb = new StringBuilder();
+		String[] arrStr = val.split("");
+		for (int i = 0; i < arrStr.length; i++) {
+			if (i == (arrStr.length - 1)) {
+				sb.append(arrStr[i]);
+			} else {
+				sb.append(arrStr[i] + seperate);
+			}
+		}
+
+		return sb.toString();
+
+	}
+
 	private static int getMaxList(ReportData rd) {
 		int maxlst = 0;
 
@@ -246,6 +269,9 @@ public class ReportExcel {
 	 * @throws Exception
 	 */
 	private static void replaceImg(String path, HSSFWorkbook wb, HSSFSheet sh, HSSFCell targetCell) throws Exception {
+
+		String mime = new MimetypesFileTypeMap().getContentType(new File(path));
+
 		InputStream inImg = new FileInputStream(path);
 
 		byte[] byteImg = IOUtils.toByteArray(inImg);
@@ -295,51 +321,50 @@ public class ReportExcel {
 				continue;
 			}
 
-			// TODO style overflow error
 			// Copy style from old cell and apply to new cell
 			HSSFCellStyle newCellStyle = workbook.createCellStyle();
 			newCellStyle.cloneStyleFrom(oldCell.getCellStyle());
 			;
 			newCell.setCellStyle(newCellStyle);
 
-			// // If there is a cell comment, copy
-			// if (newCell.getCellComment() != null) {
-			// newCell.setCellComment(oldCell.getCellComment());
-			// }
-			//
-			// // If there is a cell hyperlink, copy
-			// if (oldCell.getHyperlink() != null) {
-			// newCell.setHyperlink(oldCell.getHyperlink());
-			// }
-			//
-			// // Set the cell data type
-			// newCell.setCellType(oldCell.getCellType());
-			//
-			// // Set the cell data value
-			// switch (oldCell.getCellType()) {
-			// case Cell.CELL_TYPE_BLANK :
-			// newCell.setCellValue(oldCell.getStringCellValue());
-			// break;
-			// case Cell.CELL_TYPE_BOOLEAN :
-			// newCell.setCellValue(oldCell.getBooleanCellValue());
-			// break;
-			// case Cell.CELL_TYPE_ERROR :
-			// newCell.setCellErrorValue(oldCell.getErrorCellValue());
-			// break;
-			// case Cell.CELL_TYPE_FORMULA :
-			// newCell.setCellFormula(oldCell.getCellFormula());
-			// break;
-			// case Cell.CELL_TYPE_NUMERIC :
-			// newCell.setCellValue(oldCell.getNumericCellValue());
-			// break;
-			// case Cell.CELL_TYPE_STRING :
-			// newCell.setCellValue(oldCell.getRichStringCellValue());
-			// break;
-			// }
+			// If there is a cell comment, copy
+			if (newCell.getCellComment() != null) {
+				newCell.setCellComment(oldCell.getCellComment());
+			}
+
+			// If there is a cell hyperlink, copy
+			if (oldCell.getHyperlink() != null) {
+				newCell.setHyperlink(oldCell.getHyperlink());
+			}
+
+			// Set the cell data type
+			newCell.setCellType(oldCell.getCellType());
+
+			// Set the cell data value
+			switch (oldCell.getCellType()) {
+			case Cell.CELL_TYPE_BLANK:
+				newCell.setCellValue(oldCell.getStringCellValue());
+				break;
+			case Cell.CELL_TYPE_BOOLEAN:
+				newCell.setCellValue(oldCell.getBooleanCellValue());
+				break;
+			case Cell.CELL_TYPE_ERROR:
+				newCell.setCellErrorValue(oldCell.getErrorCellValue());
+				break;
+			case Cell.CELL_TYPE_FORMULA:
+				newCell.setCellFormula(oldCell.getCellFormula());
+				break;
+			case Cell.CELL_TYPE_NUMERIC:
+				newCell.setCellValue(oldCell.getNumericCellValue());
+				break;
+			case Cell.CELL_TYPE_STRING:
+				newCell.setCellValue(oldCell.getRichStringCellValue());
+				break;
+			}
 
 		}
 
-		// If there are are any merged regions in the source row, copy to new
+		// If there are any merged regions in the source row, copy to new
 		// row
 		for (int i = 0; i < worksheet.getNumMergedRegions(); i++) {
 			CellRangeAddress cellRangeAddress = worksheet.getMergedRegion(i);

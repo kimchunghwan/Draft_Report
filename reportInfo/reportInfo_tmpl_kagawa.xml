@@ -9,15 +9,14 @@
 	<maxLstPerPage>8</maxLstPerPage>
 	<!-- reportType: [0-Pdf][1-Excel][2-Email][3-CSV] -->
 	<reportType>1</reportType>
-	<!--  attribute type NUMERIC is for fomula type cell -->
 	<items>
 		<entry>
 			<key>POST1</key>
-			<value type="STRING" isLst="false" />
+			<value type="NUMERIC" isLst="false" />
 		</entry>
 		<entry>
 			<key>POST2</key>
-			<value type="STRING" isLst="false" />
+			<value type="NUMERIC" isLst="false" />
 		</entry>
 		<entry>
 			<key>TO</key>
@@ -25,7 +24,7 @@
 		</entry>
 		<entry>
 			<key>QUAN</key>
-			<value type="STRING" isLst="false" />
+			<value type="NUMERIC" isLst="false" />
 		</entry>
 		<entry>
 			<key>PRODUCTNAME</key>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<reportData>
+	<templetePath>\templete\tmple_合計請求書_329N.xls</templetePath>
+	<reportId>testReport</reportId>
+	<exportFolder>\export\</exportFolder>
+	<exportFileNM>請求書_329N</exportFileNM>
+	<!-- if maxLstPerPage is 0 : express all list on a Page -->
+	<!-- if maxLstPerPage is not 0 : seperate page for List -->
+	<maxLstPerPage>8</maxLstPerPage>
+	<!-- reportType: [0-Pdf][1-Excel][2-Email][3-CSV] -->
+	<reportType>1</reportType>
+	<!--  attribute type NUMERIC is for fomula type cell -->
+	<items>
+		<entry>
+			<key>MONTH</key>
+			<value type="STRING" isLst="false" />
+		</entry>
+		<entry>
+			<key>NAME</key>
+			<value type="STRING" isLst="false" />
+		</entry>
+		<entry>
+			<key>FROM</key>
+			<value type="STRING" isLst="false" />
+		</entry>
+		<entry>
+			<key>MONEY</key>
+			<value type="STRING" isLst="false" />
+		</entry>
+		<entry>
+			<key>FROM</key>
+			<value type="STRING" isLst="false" />
+		</entry>
+	</items>
+</reportData>
