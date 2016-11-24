@@ -23,7 +23,7 @@ public class ReportProc {
 	public static final int REPORT_TYPE_PDF = 0;
 	public static final int REPORT_TYPE_EXCEL = 1;
 	public static final int REPORT_TYPE_EMAIL = 2;
-	private static final int REPORT_TYPE_CSV = 4;
+	private static final int REPORT_TYPE_CSV = 3;
 	private static final String MAIL_HTML_UTF8 = "text/html; charset=utf-8";
 
 	/***
