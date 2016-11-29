@@ -88,6 +88,8 @@ public class WE_Report {
 		conn = DriverManager.getConnection("jdbc:oracle:thin:@192.168.1.12:1521:AIM", "ZSYSAIM", "we$2016");
 		conn.setAutoCommit(false);
 		System.out.println("DB connection : OK");
+
+
 	}
 
 }

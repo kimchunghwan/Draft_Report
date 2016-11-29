@@ -1,43 +1,44 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <reportData>
-	<templetePath>\templete\tmple_合計請求書_329N.xls</templetePath>
+	<templetePath>\templete\tmple_sample.xls</templetePath>
 	<reportId>testReport</reportId>
 	<exportFolder>\export\</exportFolder>
-	<exportFileNM>請求書_329N</exportFileNM>
+	<exportFileNM>tmple_sample_result</exportFileNM>
 	<!-- if maxLstPerPage is 0 : express all list on a Page -->
 	<!-- if maxLstPerPage is not 0 : seperate page for List -->
 	<maxLstPerPage>8</maxLstPerPage>
 	<!-- reportType: [0-Pdf][1-Excel][2-Email][3-CSV] -->
 	<reportType>1</reportType>
-	<!--  attribute type NUMERIC is for fomula type cell -->
+	<!-- attribute type NUMERIC is for fomula type cell -->
 	<items>
 		<entry>
-			<key>MONTH</key>
+			<key>STRING</key>
 			<value type="STRING" isLst="false" />
 		</entry>
 		<entry>
-			<key>NAME</key>
-			<value type="STRING" isLst="false" />
+			<key>STRING_SP</key>
+			<value type="STRING_SP" isLst="false" />
 		</entry>
 		<entry>
-			<key>TO</key>
-			<value type="STRING" isLst="false" />
-		</entry>
-		<entry>
-			<key>AMOUNT</key>
+			<key>STRING_SP2</key>
 			<value type="STRING_SP2" isLst="false" />
 		</entry>
 		<entry>
-			<key>FROM</key>
-			<value type="STRING" isLst="false" />
+			<key>NUMERIC</key>
+			<value type="NUMERIC" isLst="false" />
 		</entry>
 		<entry>
-			<key>MONEY1</key>
-			<value type="STRING_SP" isLst="true" />
+			<key>IMAGE</key>
+			<value type="IMAGE" isLst="false" />
 		</entry>
 		<entry>
-			<key>HURIKOMISAKI</key>
-			<value type="STRING" isLst="false" />
+			<key>BARCODE</key>
+			<value type="BARCODE" isLst="false"  option1="ean-13" />
 		</entry>
+		<entry>
+			<key>LIST</key>
+			<value type="STRING" isLst="true" />
+		</entry>
+
 	</items>
 </reportData>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <reportData>
-	<templetePath>\templete\tmple_sagawa00.xls</templetePath>
+	<templetePath>\templete\tmple_sagawa.xls</templetePath>
 	<reportId>testReport</reportId>
 	<exportFolder>\export\</exportFolder>
 	<exportFileNM>tmple_sagawa00_result</exportFileNM>

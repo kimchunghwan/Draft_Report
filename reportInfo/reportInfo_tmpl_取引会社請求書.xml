@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <reportData>
-	<templetePath>\templete\取引会社請求書.xls</templetePath>
+	<templetePath>\templete\tmple_取引会社請求書.xls</templetePath>
 	<reportId>testReport</reportId>
 	<exportFolder>\export\</exportFolder>
 	<exportFileNM>tmple_取引会社請求書_result</exportFileNM>
-	<!-- if maxLstPerPage is 0 : express all list on a Page   -->
-	<!-- if maxLstPerPage is not 0 : seperate page for List   -->
+	<!-- if maxLstPerPage is 0 : express all list on a Page -->
+	<!-- if maxLstPerPage is not 0 : seperate page for List -->
 	<maxLstPerPage>8</maxLstPerPage>
 	<!-- reportType: [0-Pdf][1-Excel][2-Email][3-CSV] -->
-	<reportType>1</reportType>
+	<reportType>0</reportType>
 	<items>
 		<entry>
 			<key>ARTICLE</key>
